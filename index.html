@@ -3,26 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>EBCO Inteligente</title>
 
 <style>
-
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
     margin:0;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
     background:#e5e5e5;
     color:#666;
 }
 
-/* =========================
-   LOGIN
-========================= */
-
+/* LOGIN */
 #loginScreen{
     position:fixed;
     inset:0;
@@ -35,7 +28,7 @@ body{
 
 .loginBox{
     width:390px;
-    background:white;
+    background:#fff;
     border-radius:8px;
     padding:35px;
     box-shadow:0 5px 25px rgba(0,0,0,.25);
@@ -76,30 +69,20 @@ body{
     cursor:pointer;
 }
 
-.loginButton:hover{
-    background:#006b35;
-}
-
 .loginError{
     color:#c62828;
     margin-top:12px;
     display:none;
 }
 
-/* =========================
-   APP
-========================= */
-
+/* APP */
 #app{
     display:none;
     height:100vh;
     overflow:hidden;
 }
 
-/* =========================
-   SIDEBAR
-========================= */
-
+/* SIDEBAR */
 .sidebar{
     width:275px;
     height:100vh;
@@ -123,7 +106,6 @@ body{
     width:85%;
     height:85%;
     object-fit:contain;
-    display:block;
 }
 
 .sectionTitle{
@@ -143,7 +125,6 @@ body{
     padding:14px 15px;
     color:white;
     border-bottom:1px solid #aaa;
-    cursor:pointer;
     font-size:14px;
 }
 
@@ -151,7 +132,6 @@ body{
     border-bottom:none;
 }
 
-.menuItem:hover,
 .menuItem.active{
     background:#a5a5a5;
     font-weight:bold;
@@ -165,8 +145,7 @@ label{
     margin:15px 3px 6px;
 }
 
-select,
-.userField{
+select,.userField{
     width:100%;
     padding:11px;
     border:none;
@@ -175,367 +154,296 @@ select,
     color:#666;
 }
 
-.userField{
-    margin-bottom:8px;
-}
-
 .logout{
-    position:absolute;
-    bottom:45px;
-    left:15px;
-    right:15px;
+    width:100%;
+    margin-top:8px;
     padding:11px;
     border:none;
     border-radius:5px;
-    background:#777;
+    background:#999;
     color:white;
     font-weight:bold;
     cursor:pointer;
 }
 
-.logout:hover{
-    background:#555;
-}
-
 .footerText{
     position:absolute;
-    bottom:12px;
-    width:100%;
-    text-align:center;
-    left:0;
-    color:#008542;
+    bottom:15px;
+    left:15px;
+    color:#777;
     font-size:11px;
-    font-weight:bold;
 }
 
-/* =========================
-   MAIN
-========================= */
-
+/* MAIN */
 .main{
     margin-left:275px;
     height:100vh;
-    padding:8px;
-    overflow:hidden;
+    padding:18px;
+    overflow:auto;
 }
-
-/* =========================
-   TOP
-========================= */
 
 .topGrid{
     display:grid;
-    grid-template-columns:1fr 300px;
-    gap:8px;
-    height:115px;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin-bottom:15px;
 }
 
 .card{
-    background:#f7f7f7;
-    border-radius:6px;
-    padding:14px;
-    border:1px solid #ddd;
+    background:white;
+    border-radius:7px;
+    padding:18px;
+    box-shadow:0 1px 3px rgba(0,0,0,.08);
 }
 
 .smallTitle{
-    font-size:11px;
-    color:#999;
-    text-transform:uppercase;
+    font-size:12px;
+    color:#888;
+    font-weight:bold;
 }
 
 .bigNumber{
-    font-size:35px;
-    margin-top:5px;
-    color:#888;
+    font-size:31px;
+    color:#555;
+    font-weight:bold;
+    margin-top:8px;
 }
 
 .subText{
     font-size:11px;
-    color:#aaa;
+    color:#999;
+    margin-top:4px;
 }
 
 .progress{
-    height:4px;
-    background:#999;
+    height:7px;
+    background:#008542;
+    border-radius:5px;
     margin-top:12px;
 }
 
-/* =========================
-   CONTENT GRID
-========================= */
-
+/* CONTENT */
 .contentGrid{
     display:grid;
-    grid-template-columns:315px 1fr 305px;
-    gap:8px;
-    height:calc(100vh - 131px);
-    margin-top:8px;
+    grid-template-columns:270px 1fr 430px;
+    gap:15px;
 }
 
-/* =========================
-   MAP
-========================= */
-
+/* MAP */
 .mapPanel{
-    background:white;
-    border:2px solid #367a59;
-    border-radius:40px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    overflow:hidden;
-}
-
-.mapTitle{
-    color:#333;
-    font-size:22px;
-    margin-top:15px;
-}
-
-.mapContainer{
-    flex:1;
-    width:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    background:#fff;
+    border-radius:7px;
     padding:15px;
 }
 
-.mapContainer img{
-    width:88%;
-    height:90%;
-    object-fit:contain;
-    display:block;
-}
-
-.mapChileText{
-    font-size:18px;
-    margin-bottom:20px;
+.mapTitle{
+    font-size:13px;
+    font-weight:bold;
     color:#777;
+    margin-bottom:10px;
 }
 
-/* =========================
-   CENTER
-========================= */
-
-.center{
+.mapContainer{
+    height:420px;
     display:flex;
-    flex-direction:column;
-    gap:8px;
-    min-width:0;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.mapContainer img{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+}
+
+/* DASHBOARD */
+.dashboard{
+    background:#fff;
+    border-radius:7px;
+    padding:15px;
+}
+
+.dashboard h2{
+    margin:0 0 15px;
+    font-size:17px;
+    color:#666;
 }
 
 .metrics{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:8px;
+    gap:10px;
 }
 
 .metric{
-    background:#f7f7f7;
     border:1px solid #ddd;
     border-radius:6px;
-    padding:14px;
-    height:84px;
+    padding:13px;
+}
+
+.metricTitle{
+    font-size:11px;
+    color:#999;
 }
 
 .metricNumber{
     font-size:23px;
-    color:#777;
     font-weight:bold;
-    margin-top:6px;
+    color:#555;
+    margin-top:5px;
 }
 
-.chart{
-    height:170px;
-    background:#f7f7f7;
-    border:1px solid #ddd;
-    border-radius:6px;
-    padding:14px;
+.metricVariation{
+    font-size:11px;
+    margin-top:4px;
 }
 
-.chartTitle{
-    font-size:12px;
-    color:#999;
-}
-
-.bars{
-    height:125px;
-    display:flex;
-    align-items:flex-end;
-    gap:5px;
-    margin-top:8px;
-}
-
-.bar{
-    flex:1;
-    background:#aaa;
-    min-width:4px;
-    border-radius:2px 2px 0 0;
-}
-
-.lowerGrid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-    height:165px;
-}
-
-.alerts,
-.history{
-    background:#f7f7f7;
-    border:1px solid #ddd;
-    border-radius:6px;
-    padding:14px;
-    overflow:hidden;
+.alerts{
+    margin-top:15px;
+    border-top:1px solid #ddd;
+    padding-top:12px;
 }
 
 .alerts ul{
+    margin:8px 0 0;
     padding-left:18px;
-    margin:10px 0;
-    font-size:11px;
-    line-height:2;
-}
-
-.historyRow{
-    display:flex;
-    justify-content:space-between;
-    border-bottom:1px solid #ddd;
-    padding:8px 0;
-    font-size:11px;
-}
-
-.historyRow strong{
-    color:#008542;
+    font-size:12px;
+    line-height:1.7;
 }
 
 .maintenance{
-    flex:1;
-    background:#f7f7f7;
-    border:1px solid #ddd;
-    border-radius:6px;
-    padding:14px;
-    overflow:hidden;
+    margin-top:15px;
+    border-top:1px solid #ddd;
+    padding-top:12px;
 }
 
 .maintenance h2{
-    margin:0 0 8px;
-    color:#777;
-    font-size:22px;
+    font-size:14px;
 }
 
 .maintenanceItem{
-    padding:9px 0;
-    border-bottom:1px solid #ddd;
     font-size:12px;
+    margin:10px 0;
 }
 
 .dot{
+    width:7px;
+    height:7px;
+    background:#888;
     display:inline-block;
-    width:10px;
-    height:10px;
-    background:#aaa;
     border-radius:50%;
-    margin-right:10px;
+    margin-right:6px;
 }
 
-/* =========================
-   CHAT
-========================= */
-
+/* CHAT */
 .chat{
-    background:#efffe9;
-    border:2px solid #008542;
+    background:white;
     border-radius:7px;
     display:flex;
     flex-direction:column;
+    min-height:650px;
     overflow:hidden;
 }
 
 .chatHeader{
-    background:#006b35;
+    padding:15px;
+    background:#008542;
     color:white;
-    padding:16px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
 .chatHeader h2{
     margin:0;
-    font-size:22px;
+    font-size:17px;
 }
 
 .chatHeader span{
     font-size:11px;
-    color:#c8f5d5;
 }
 
 .chatContext{
-    padding:10px;
-    background:#f5fff1;
-    color:#666;
+    padding:9px 15px;
+    background:#f2f2f2;
     font-size:11px;
+    color:#777;
+    border-bottom:1px solid #ddd;
 }
 
 .quickTitle{
-    padding:0 10px 5px;
-    font-size:11px;
-    color:#777;
+    font-size:10px;
+    font-weight:bold;
+    color:#999;
+    padding:10px 15px 5px;
 }
 
 .quickButtons{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:6px;
-    padding:0 10px 8px;
+    padding:0 15px 10px;
 }
 
 .quickButton{
-    border:1px solid #46aa70;
-    background:white;
-    color:#287c4c;
-    border-radius:18px;
-    padding:7px 5px;
+    border:1px solid #ddd;
+    background:#fafafa;
+    color:#666;
+    border-radius:4px;
+    padding:8px;
     font-size:10px;
     cursor:pointer;
 }
 
 .quickButton:hover{
-    background:#dff7e6;
+    border-color:#008542;
 }
 
 .chatHistory{
     flex:1;
     overflow-y:auto;
-    padding:10px;
+    padding:12px 15px;
+    background:#fafafa;
 }
 
 .message{
     margin-bottom:10px;
-    font-size:11px;
-    line-height:1.5;
 }
 
 .userMessage{
     background:#008542;
     color:white;
-    padding:8px 10px;
-    border-radius:12px 12px 2px 12px;
-    margin-left:25px;
+    padding:9px 11px;
+    border-radius:8px 8px 2px 8px;
+    margin-left:35px;
+    font-size:12px;
 }
 
 .aiMessage{
-    background:#dff4d6;
-    color:#4f5f4f;
-    padding:9px 10px;
-    border-radius:12px 12px 12px 2px;
-    margin-right:10px;
+    background:white;
+    border:1px solid #ddd;
+    color:#555;
+    padding:10px 11px;
+    border-radius:8px 8px 8px 2px;
+    margin-right:20px;
+    font-size:12px;
+    line-height:1.55;
+}
+
+.source{
+    color:#999;
+    font-size:10px;
+    margin-top:7px;
+    border-top:1px solid #eee;
+    padding-top:5px;
 }
 
 .chatInputArea{
     display:flex;
-    gap:5px;
+    gap:7px;
     padding:10px;
-    background:#eaffdf;
-    border-top:1px solid #9bcfa9;
+    border-top:1px solid #ddd;
 }
 
 .chatInput{
@@ -556,42 +464,37 @@ select,
     cursor:pointer;
 }
 
-.sendButton:hover{
-    background:#006b35;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:1100px){
-
-    .sidebar{
-        width:220px;
-    }
-
-    .main{
-        margin-left:220px;
-    }
-
+/* RESPONSIVE */
+@media(max-width:1200px){
     .contentGrid{
-        grid-template-columns:260px 1fr;
+        grid-template-columns:250px 1fr;
     }
-
     .chat{
-        display:none;
+        grid-column:1/-1;
+        min-height:550px;
     }
 }
 
+@media(max-width:800px){
+    .sidebar{
+        width:210px;
+    }
+    .main{
+        margin-left:210px;
+    }
+    .contentGrid{
+        grid-template-columns:1fr;
+    }
+    .topGrid{
+        grid-template-columns:1fr;
+    }
+}
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     LOGIN
-========================= -->
-
+<!-- LOGIN -->
 <div id="loginScreen">
 
     <div class="loginBox">
@@ -600,7 +503,6 @@ select,
             src="logo-ebco.jpg"
             class="loginLogo"
             alt="EBCO Energía"
-            onerror="this.style.display='none';"
         >
 
         <h1>EBCO Inteligente</h1>
@@ -615,19 +517,14 @@ select,
             type="password"
             id="password"
             placeholder="Contraseña"
+            onkeydown="if(event.key==='Enter') login()"
         >
 
-        <button
-            class="loginButton"
-            onclick="login()"
-        >
+        <button class="loginButton" onclick="login()">
             INGRESAR
         </button>
 
-        <div
-            class="loginError"
-            id="loginError"
-        >
+        <div class="loginError" id="loginError">
             Usuario o contraseña incorrectos
         </div>
 
@@ -636,112 +533,56 @@ select,
 </div>
 
 
-<!-- =========================
-     APP
-========================= -->
-
+<!-- APP -->
 <div id="app">
 
     <!-- SIDEBAR -->
-
     <aside class="sidebar">
 
         <div class="logoBox">
-
             <img
                 src="logo-ebco.jpg"
                 alt="EBCO Energía"
-                onerror="this.onerror=null; this.src=''; this.alt='EBCO Energía';"
             >
-
         </div>
 
-
-        <div class="sectionTitle">
-            PRINCIPAL
-        </div>
+        <div class="sectionTitle">PRINCIPAL</div>
 
         <div class="menu">
-
-            <div class="menuItem active">
-                ◉ &nbsp; Resumen
-            </div>
-
-            <div class="menuItem">
-                ▥ &nbsp; Generación
-            </div>
-
-            <div class="menuItem">
-                ↪ &nbsp; Disponibilidad
-            </div>
-
+            <div class="menuItem active">◉ &nbsp; Resumen</div>
+            <div class="menuItem">▥ &nbsp; Generación</div>
+            <div class="menuItem">↪ &nbsp; Disponibilidad</div>
         </div>
 
-
-        <div class="sectionTitle">
-            GESTIÓN
-        </div>
+        <div class="sectionTitle">GESTIÓN</div>
 
         <div class="menu">
-
-            <div class="menuItem">
-                ▤ &nbsp; Informes
-            </div>
-
-            <div class="menuItem">
-                ⚒ &nbsp; Mantenimiento
-            </div>
-
-            <div class="menuItem">
-                △ &nbsp; Alertas
-            </div>
-
+            <div class="menuItem">▤ &nbsp; Informes</div>
+            <div class="menuItem">⚒ &nbsp; Mantenimiento</div>
+            <div class="menuItem">△ &nbsp; Alertas</div>
         </div>
 
-
-        <label>
-            PARQUE
-        </label>
+        <label>PARQUE</label>
 
         <select id="parkSelect" onchange="updateDashboard()">
-
             <option>Santa Inés</option>
-            <option>Parque Norte</option>
-            <option>Parque Centro</option>
-            <option>Parque Sur</option>
-
         </select>
 
-
-        <label>
-            PERÍODO
-        </label>
+        <label>PERÍODO</label>
 
         <select id="periodSelect" onchange="updateDashboard()">
-
             <option>Enero 2026</option>
             <option>Febrero 2026</option>
             <option>Diciembre 2025</option>
-
         </select>
 
+        <label>USUARIO</label>
 
-        <label>
-            USUARIO
-        </label>
-
-        <div
-            class="userField"
-            id="loggedUser"
-        >
+        <div class="userField" id="loggedUser">
             sponsor
         </div>
 
-
-        <button
-            class="logout"
-            onclick="logout()"
-        >
+        <button class="logout" onclick="logout()">
             ⎋ &nbsp; SALIR
         </button>
 
@@ -754,22 +595,17 @@ select,
 
 
     <!-- MAIN -->
-
     <main class="main">
-
-
-        <!-- TOP -->
 
         <div class="topGrid">
 
             <div class="card">
-
                 <div class="smallTitle">
                     Disponibilidad mensual
                 </div>
 
-                <div class="bigNumber">
-                    100%
+                <div class="bigNumber" id="availabilityValue">
+                    100,0%
                 </div>
 
                 <div class="subText">
@@ -777,9 +613,7 @@ select,
                 </div>
 
                 <div class="progress"></div>
-
             </div>
-
 
             <div class="card">
 
@@ -800,13 +634,9 @@ select,
         </div>
 
 
-        <!-- CONTENT -->
-
         <div class="contentGrid">
 
-
-            <!-- MAP -->
-
+            <!-- MAPA -->
             <section class="mapPanel">
 
                 <div class="mapTitle">
@@ -818,40 +648,41 @@ select,
                     <img
                         src="mapa-chile.jpg"
                         alt="Mapa de Chile con ubicación de parques EBCO"
-                        onerror="mostrarErrorMapa(this)"
+                        onerror="mapError(this)"
                     >
 
-                </div>
-
-                <div class="mapChileText">
-                    CHILE
                 </div>
 
             </section>
 
 
-            <!-- CENTER -->
+            <!-- DASHBOARD -->
+            <section class="dashboard">
 
-            <section class="center">
-
+                <h2 id="dashboardTitle">
+                    Santa Inés · Enero 2026
+                </h2>
 
                 <div class="metrics">
 
                     <div class="metric">
 
-                        <div class="smallTitle">
-                            Energía generada
+                        <div class="metricTitle">
+                            GENERACIÓN
                         </div>
 
                         <div
                             class="metricNumber"
-                            id="energyValue"
+                            id="generationValue"
                         >
                             1.919 MWh
                         </div>
 
-                        <div class="subText">
-                            ▼ -20,2% vs estimado
+                        <div
+                            class="metricVariation"
+                            id="generationVariation"
+                        >
+                            -20,2% vs. estimado
                         </div>
 
                     </div>
@@ -859,8 +690,8 @@ select,
 
                     <div class="metric">
 
-                        <div class="smallTitle">
-                            Insolación
+                        <div class="metricTitle">
+                            INSOLACIÓN
                         </div>
 
                         <div
@@ -870,8 +701,11 @@ select,
                             265,7 kWh/m²
                         </div>
 
-                        <div class="subText">
-                            ▼ -20,3% vs estimado
+                        <div
+                            class="metricVariation"
+                            id="irradiationVariation"
+                        >
+                            -20,3% vs. estimado
                         </div>
 
                     </div>
@@ -879,107 +713,13 @@ select,
                 </div>
 
 
-                <div class="chart">
+                <div class="alerts">
 
-                    <div class="chartTitle">
-                        Generación diaria vs insolación
+                    <div class="smallTitle">
+                        ALERTAS DEL MES
                     </div>
 
-                    <div class="bars">
-
-                        <div class="bar" style="height:80%"></div>
-                        <div class="bar" style="height:76%"></div>
-                        <div class="bar" style="height:73%"></div>
-                        <div class="bar" style="height:68%"></div>
-                        <div class="bar" style="height:79%"></div>
-                        <div class="bar" style="height:84%"></div>
-                        <div class="bar" style="height:74%"></div>
-                        <div class="bar" style="height:15%"></div>
-                        <div class="bar" style="height:10%"></div>
-                        <div class="bar" style="height:65%"></div>
-                        <div class="bar" style="height:72%"></div>
-                        <div class="bar" style="height:82%"></div>
-                        <div class="bar" style="height:12%"></div>
-                        <div class="bar" style="height:71%"></div>
-                        <div class="bar" style="height:77%"></div>
-                        <div class="bar" style="height:81%"></div>
-                        <div class="bar" style="height:76%"></div>
-                        <div class="bar" style="height:87%"></div>
-                        <div class="bar" style="height:83%"></div>
-                        <div class="bar" style="height:79%"></div>
-                        <div class="bar" style="height:75%"></div>
-                        <div class="bar" style="height:72%"></div>
-                        <div class="bar" style="height:81%"></div>
-                        <div class="bar" style="height:84%"></div>
-                        <div class="bar" style="height:77%"></div>
-                        <div class="bar" style="height:75%"></div>
-                        <div class="bar" style="height:79%"></div>
-                        <div class="bar" style="height:82%"></div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="lowerGrid">
-
-                    <div class="alerts">
-
-                        <div class="smallTitle">
-                            Alertas del mes
-                        </div>
-
-                        <ul id="alertsList">
-
-                            <li>
-                                Se registraron problemas de comunicación.
-                            </li>
-
-                            <li>
-                                Se registró un evento EF1+.
-                            </li>
-
-                            <li>
-                                El parque mantiene restricciones asociadas a la red.
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-
-                    <div class="history">
-
-                        <div class="smallTitle">
-                            Disponibilidad histórica
-                        </div>
-
-                        <div class="historyRow">
-                            <span>Oct 2025</span>
-                            <strong>100,0%</strong>
-                        </div>
-
-                        <div class="historyRow">
-                            <span>Nov 2025</span>
-                            <strong>100,0%</strong>
-                        </div>
-
-                        <div class="historyRow">
-                            <span>Dic 2025</span>
-                            <strong>100,0%</strong>
-                        </div>
-
-                        <div class="historyRow">
-                            <span>Ene 2026</span>
-                            <strong>100,0%</strong>
-                        </div>
-
-                        <div class="historyRow">
-                            <span>Feb 2026</span>
-                            <strong>100,0%</strong>
-                        </div>
-
-                    </div>
+                    <ul id="alertsList"></ul>
 
                 </div>
 
@@ -987,44 +727,10 @@ select,
                 <div class="maintenance">
 
                     <h2>
-                        Próximos mantenimientos
+                        MANTENIMIENTO
                     </h2>
 
-                    <div class="maintenanceItem">
-                        <span class="dot"></span>
-                        <strong>Mantención semestral de tableros</strong>
-                        <br>
-                        <small>
-                            Inspección de fijaciones y polvo interior
-                        </small>
-                    </div>
-
-                    <div class="maintenanceItem">
-                        <span class="dot"></span>
-                        <strong>Lavado de paneles</strong>
-                        <br>
-                        <small>
-                            Evaluación de proveedor especializado
-                        </small>
-                    </div>
-
-                    <div class="maintenanceItem">
-                        <span class="dot"></span>
-                        <strong>Piranómetros</strong>
-                        <br>
-                        <small>
-                            Inspecciones semanales y mensuales
-                        </small>
-                    </div>
-
-                    <div class="maintenanceItem">
-                        <span class="dot"></span>
-                        <strong>CCTV + Perimetral</strong>
-                        <br>
-                        <small>
-                            Monitoreo mensual
-                        </small>
-                    </div>
+                    <div id="maintenanceList"></div>
 
                 </div>
 
@@ -1032,18 +738,13 @@ select,
 
 
             <!-- CHAT -->
-
             <section class="chat">
 
                 <div class="chatHeader">
 
-                    <h2>
-                        EBCOInteligente
-                    </h2>
+                    <h2>EBCOInteligente</h2>
 
-                    <span>
-                        ● Lecciones
-                    </span>
+                    <span>● Control operacional</span>
 
                 </div>
 
@@ -1079,9 +780,9 @@ select,
 
                     <button
                         class="quickButton"
-                        onclick="askQuestion('¿Qué fallas se repitieron?')"
+                        onclick="askQuestion('¿Qué fallas se registraron?')"
                     >
-                        ¿Qué fallas se repitieron?
+                        ¿Qué fallas se registraron?
                     </button>
 
                     <button
@@ -1100,15 +801,13 @@ select,
 
                     <button
                         class="quickButton"
-                        onclick="askQuestion('¿Qué recomendarías?')"
+                        onclick="askQuestion('Compara diciembre, enero y febrero')"
                     >
-                        ¿Qué recomendarías?
+                        Comparar períodos
                     </button>
 
                 </div>
 
-
-                <!-- HISTORIAL -->
 
                 <div
                     class="chatHistory"
@@ -1119,15 +818,17 @@ select,
 
                         <div class="aiMessage">
 
-                            Hola. Estoy consultando la información
-                            correspondiente a <strong>Santa Inés</strong>
-                            para <strong>Enero 2026</strong>.
+                            Hola. Estoy consultando los datos
+                            operacionales de
+                            <strong>Santa Inés</strong>
+                            para
+                            <strong>Enero 2026</strong>.
 
                             <br><br>
 
-                            Puedes preguntarme por problemas,
-                            mantenimiento, fallas, acciones ejecutadas
-                            o lecciones aprendidas.
+                            Puedes preguntarme por generación,
+                            fallas, mantenimiento, problemas,
+                            acciones o comparar períodos.
 
                         </div>
 
@@ -1166,23 +867,267 @@ select,
 
 <script>
 
-/* =========================
-   LOGIN
-========================= */
-
-/*
-   USUARIO Y PASSWORD DEL PROTOTIPO
-
-   Usuario:
-   sponsor
-
-   Password:
-   ebco2026
-*/
+/* =====================================================
+   CONFIGURACIÓN
+===================================================== */
 
 const VALID_USER = "sponsor";
 const VALID_PASSWORD = "ebco2026";
 
+
+/* =====================================================
+   DATOS REALES DE LOS INFORMES
+   SANTA INÉS SUNRAY
+===================================================== */
+
+const DATA = {
+
+    "Diciembre 2025": {
+
+        generation: "2.145 MWh",
+        generationExpected: "2.289 MWh",
+        generationVariation: "-6,3%",
+
+        irradiation: "276,5 kWh/m²",
+        irradiationExpected: "309 kWh/m²",
+        irradiationVariation: "-10,5%",
+
+        availability: "100,0%",
+
+        reconectadores: 3,
+
+        problems: [
+
+            "La generación mensual fue de 2.145 MWh, inferior a la generación estimada.",
+
+            "La insolación inclinada alcanzó 276,5 kWh/m², 10,5% por debajo de lo estimado.",
+
+            "Se registraron tres eventos de parada durante el mes.",
+
+            "Las paradas se registraron los días 11, 21 y 30 de diciembre."
+
+        ],
+
+        failures: [
+
+            "11 de diciembre: parada de planta con una duración registrada de aproximadamente 0,86 horas.",
+
+            "21 de diciembre: parada de planta con una duración registrada de aproximadamente 1,18 horas.",
+
+            "30 de diciembre: parada de planta registrada durante el período.",
+
+            "Se registraron tres operaciones de reconectador durante diciembre."
+
+        ],
+
+        maintenance: [
+
+            "El plan de mantenimiento preventivo se encontraba en ejecución.",
+
+            "El desbroce del parque fue una actividad prioritaria del período.",
+
+            "El desbroce se inició a fines de noviembre y se proyectó su finalización durante diciembre.",
+
+            "Las actividades se desarrollaron sin incidentes ni accidentes reportados."
+
+        ],
+
+        actions: [
+
+            "Continuidad del plan de mantenimiento preventivo.",
+
+            "Seguimiento de las actividades de desbroce.",
+
+            "Seguimiento de los eventos de parada registrados durante el período.",
+
+            "Supervisión de las condiciones operacionales del parque."
+
+        ],
+
+        lessons: [
+
+            "El seguimiento del plan de mantenimiento permite mantener trazabilidad sobre las actividades.",
+
+            "La generación debe analizarse conjuntamente con la insolación disponible.",
+
+            "Las restricciones operacionales deben diferenciarse de las causas directamente atribuibles al mantenimiento."
+
+        ]
+
+    },
+
+
+    "Enero 2026": {
+
+        generation: "1.919 MWh",
+        generationExpected: "2.404 MWh",
+        generationVariation: "-20,2%",
+
+        irradiation: "265,7 kWh/m²",
+        irradiationExpected: "334 kWh/m²",
+        irradiationVariation: "-20,3%",
+
+        availability: "100,0%",
+
+        reconectadores: 6,
+
+        problems: [
+
+            "La generación mensual fue de 1.919 MWh, aproximadamente 20,2% inferior a lo esperado.",
+
+            "La insolación inclinada fue de 265,7 kWh/m², aproximadamente 20,3% inferior a lo estimado.",
+
+            "Se registraron problemas de comunicación los días 8, 9, 10 y 11 de enero.",
+
+            "El 13 de enero se detectó un evento EF1+.",
+
+            "El parque mantenía restricciones asociadas a la red.",
+
+            "El control de potencia del parque se encontraba ajustado al 90%."
+
+        ],
+
+        failures: [
+
+            "Problemas de comunicación registrados entre el 8 y el 11 de enero.",
+
+            "Evento EF1+ registrado el 13 de enero.",
+
+            "Se registraron seis operaciones de reconectador durante enero.",
+
+            "El registro de eventos incluye situaciones asociadas a VVS, EF1+ y PDOP."
+
+        ],
+
+        maintenance: [
+
+            "Se solucionó la falla asociada al TK-123.",
+
+            "Se realizó cambio de TCU.",
+
+            "Se ejecutaron actividades preventivas sobre piranómetros.",
+
+            "Se realizaron actividades asociadas a CCTV y perímetro.",
+
+            "Se efectuaron actividades de seguimiento operacional."
+
+        ],
+
+        actions: [
+
+            "Intervención para solucionar la falla EF1+.",
+
+            "Solución de la falla asociada al TK-123.",
+
+            "Cambio de TCU.",
+
+            "Seguimiento de los problemas de comunicación.",
+
+            "Continuidad de las órdenes de trabajo preventivas."
+
+        ],
+
+        lessons: [
+
+            "Los problemas de comunicación deben ser diferenciados de la indisponibilidad física de equipos.",
+
+            "Una disponibilidad de 100% no significa necesariamente ausencia de eventos operacionales.",
+
+            "La trazabilidad entre falla, orden de trabajo y acción correctiva permite mejorar el control operacional.",
+
+            "La consolidación de eventos permite identificar patrones que pueden pasar inadvertidos en una revisión manual."
+
+        ]
+
+    },
+
+
+    "Febrero 2026": {
+
+        generation: "1.633 MWh",
+        generationExpected: "1.933 MWh",
+        generationVariation: "-15,5%",
+
+        irradiation: "253,1 kWh/m²",
+        irradiationExpected: "270 kWh/m²",
+        irradiationVariation: "-6,4%",
+
+        availability: "100,0%",
+
+        reconectadores: 5,
+
+        problems: [
+
+            "La generación mensual fue de 1.633 MWh, aproximadamente 15,5% inferior a lo esperado.",
+
+            "La insolación inclinada fue de aproximadamente 253,1 kWh/m².",
+
+            "Se registraron eventos asociados a PDOP y EF1+.",
+
+            "Se registraron problemas de comunicación asociados a GPM+.",
+
+            "Se registraron desconexiones durante los días 4, 11, 14, 17 y 27 de febrero."
+
+        ],
+
+        failures: [
+
+            "Eventos asociados a PDOP durante el período.",
+
+            "Eventos EF1+ durante febrero.",
+
+            "Problemas de comunicación asociados a GPM+.",
+
+            "Desconexiones registradas en diferentes días del mes.",
+
+            "Se registraron operaciones del reconectador durante el período."
+
+        ],
+
+        maintenance: [
+
+            "Continuidad de las actividades periódicas de piranómetros.",
+
+            "Seguimiento de actividades de CCTV y plataforma.",
+
+            "Seguimiento de eventos operacionales.",
+
+            "Continuidad de la planificación de mantenimiento preventivo."
+
+        ],
+
+        actions: [
+
+            "Seguimiento de eventos de desconexión.",
+
+            "Monitoreo de las condiciones de comunicación.",
+
+            "Seguimiento de eventos PDOP y EF1+.",
+
+            "Continuidad de las actividades preventivas."
+
+        ],
+
+        lessons: [
+
+            "Los eventos operacionales deben clasificarse según su causa para determinar responsabilidades y pérdidas.",
+
+            "La disponibilidad mensual no debe analizarse de manera aislada.",
+
+            "La integración de eventos, generación y mantenimiento permite una interpretación más completa del desempeño.",
+
+            "Los problemas de comunicación deben incorporarse explícitamente al análisis de reportabilidad."
+
+        ]
+
+    }
+
+};
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
 
 function login(){
 
@@ -1211,6 +1156,8 @@ function login(){
             "true"
         );
 
+        updateDashboard();
+
     }else{
 
         document.getElementById("loginError").style.display =
@@ -1231,18 +1178,11 @@ function logout(){
     document.getElementById("loginScreen").style.display =
         "flex";
 
-    document.getElementById("username").value =
-        "";
-
-    document.getElementById("password").value =
-        "";
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
 
 }
 
-
-/* =========================
-   CHECK LOGIN
-========================= */
 
 window.addEventListener("load",function(){
 
@@ -1256,14 +1196,16 @@ window.addEventListener("load",function(){
         document.getElementById("app").style.display =
             "block";
 
+        updateDashboard();
+
     }
 
 });
 
 
-/* =========================
+/* =====================================================
    DASHBOARD
-========================= */
+===================================================== */
 
 function updateDashboard(){
 
@@ -1273,20 +1215,76 @@ function updateDashboard(){
     const period =
         document.getElementById("periodSelect").value;
 
+    const data =
+        DATA[period];
+
     document.getElementById("chatContext").textContent =
         park + " · " + period;
 
-    /*
-       Aquí después conectamos los datos reales
-       de los CSV/XLSM.
-    */
+    document.getElementById("dashboardTitle").textContent =
+        park + " · " + period;
+
+    document.getElementById("availabilityValue").textContent =
+        data.availability;
+
+    document.getElementById("generationValue").textContent =
+        data.generation;
+
+    document.getElementById("generationVariation").textContent =
+        data.generationVariation + " vs. estimado";
+
+    document.getElementById("irradiationValue").textContent =
+        data.irradiation;
+
+    document.getElementById("irradiationVariation").textContent =
+        data.irradiationVariation + " vs. estimado";
+
+
+    const alerts =
+        document.getElementById("alertsList");
+
+    alerts.innerHTML = "";
+
+    data.problems.slice(0,4).forEach(function(item){
+
+        const li =
+            document.createElement("li");
+
+        li.textContent =
+            item;
+
+        alerts.appendChild(li);
+
+    });
+
+
+    const maintenance =
+        document.getElementById("maintenanceList");
+
+    maintenance.innerHTML = "";
+
+    data.maintenance.forEach(function(item){
+
+        const div =
+            document.createElement("div");
+
+        div.className =
+            "maintenanceItem";
+
+        div.innerHTML =
+            '<span class="dot"></span>' +
+            escapeHtml(item);
+
+        maintenance.appendChild(div);
+
+    });
 
 }
 
 
-/* =========================
+/* =====================================================
    CHAT
-========================= */
+===================================================== */
 
 function handleEnter(event){
 
@@ -1330,53 +1328,47 @@ function askQuestion(question){
         document.getElementById("periodSelect").value;
 
 
-    /*
-       MENSAJE DEL USUARIO
-    */
+    /* USUARIO */
 
-    const userDiv =
+    const user =
         document.createElement("div");
 
-    userDiv.className =
+    user.className =
         "message";
 
-    userDiv.innerHTML =
+    user.innerHTML =
         '<div class="userMessage">' +
         escapeHtml(question) +
         '</div>';
 
-    history.appendChild(userDiv);
+    history.appendChild(user);
 
 
-    /*
-       RESPUESTA CONTEXTUAL
-       
-       Importante:
-       no se borra el historial.
-       Cada pregunta se agrega debajo
-       de la anterior.
-    */
+    /* IA */
 
-    let answer = getAnswer(
-        question,
-        park,
-        period
-    );
+    const answer =
+        getAnswer(
+            question,
+            park,
+            period
+        );
 
 
-    const aiDiv =
+    const bot =
         document.createElement("div");
 
-    aiDiv.className =
+    bot.className =
         "message";
 
-    aiDiv.innerHTML =
+    bot.innerHTML =
         '<div class="aiMessage">' +
         answer +
         '</div>';
 
-    history.appendChild(aiDiv);
+    history.appendChild(bot);
 
+
+    /* HISTORIAL NO SE BORRA */
 
     history.scrollTop =
         history.scrollHeight;
@@ -1384,126 +1376,508 @@ function askQuestion(question){
 }
 
 
-/* =========================
-   RESPUESTAS
-========================= */
+/* =====================================================
+   MOTOR DE RESPUESTAS
+===================================================== */
 
 function getAnswer(question,park,period){
 
     const q =
-        question.toLowerCase();
+        question
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"");
 
+    const data =
+        DATA[period];
+
+
+    /* COMPARACIÓN */
+
+    if(
+        q.includes("compara") ||
+        q.includes("comparar") ||
+        q.includes("diferencia entre") ||
+        q.includes("diferencias")
+    ){
+
+        return comparePeriods(park);
+
+    }
+
+
+    /* GENERACIÓN */
+
+    if(
+        q.includes("generacion") ||
+        q.includes("energia") ||
+        q.includes("produccion")
+    ){
+
+        return `
+
+        Para <strong>${park}</strong> durante
+        <strong>${period}</strong>, la generación fue de
+        <strong>${data.generation}</strong>.
+
+        <br><br>
+
+        La generación estimada era de
+        <strong>${data.generationExpected}</strong>.
+
+        <br><br>
+
+        Esto representa una variación de
+        <strong>${data.generationVariation}</strong>
+        respecto de lo esperado.
+
+        <div class="source">
+        Fuente: Informe O&M ${period} – Santa Inés Sunray.
+        </div>
+
+        `;
+
+    }
+
+
+    /* INSOLACIÓN */
+
+    if(
+        q.includes("insolacion") ||
+        q.includes("radiacion")
+    ){
+
+        return `
+
+        Para <strong>${park}</strong> durante
+        <strong>${period}</strong>, la insolación inclinada
+        registrada fue de
+        <strong>${data.irradiation}</strong>.
+
+        <br><br>
+
+        El valor estimado era de
+        <strong>${data.irradiationExpected}</strong>.
+
+        <br><br>
+
+        La variación fue de
+        <strong>${data.irradiationVariation}</strong>.
+
+        <div class="source">
+        Fuente: Informe O&M ${period} – Santa Inés Sunray.
+        </div>
+
+        `;
+
+    }
+
+
+    /* DISPONIBILIDAD */
+
+    if(
+        q.includes("disponibilidad")
+    ){
+
+        return `
+
+        La disponibilidad registrada para
+        <strong>${park}</strong> durante
+        <strong>${period}</strong> fue de
+        <strong>${data.availability}</strong>.
+
+        <br><br>
+
+        Este indicador debe interpretarse junto con los
+        eventos operacionales registrados, ya que una
+        disponibilidad de 100% no significa necesariamente
+        ausencia de eventos.
+
+        <div class="source">
+        Fuente: Informe O&M ${period}.
+        </div>
+
+        `;
+
+    }
+
+
+    /* RECONNECTADORES */
+
+    if(
+        q.includes("reconectador")
+    ){
+
+        return `
+
+        Durante <strong>${period}</strong> se registraron
+        <strong>${data.reconectadores}</strong> operaciones
+        de reconectador en <strong>${park}</strong>.
+
+        <div class="source">
+        Fuente: Informe O&M ${period}.
+        </div>
+
+        `;
+
+    }
+
+
+    /* PROBLEMAS */
 
     if(
         q.includes("problema") ||
-        q.includes("problemas")
+        q.includes("problemas") ||
+        q.includes("eventos") ||
+        q.includes("que paso")
     ){
 
-        return `
-        Para <strong>${park}</strong> durante
-        <strong>${period}</strong>, el dashboard registra
-        eventos operacionales que deben analizarse en conjunto
-        con las restricciones externas y las condiciones de
-        operación del parque.
-        `;
+        return listResponse(
+            "Problemas y eventos registrados",
+            data.problems,
+            period
+        );
 
     }
 
 
-    if(
-        q.includes("mantenimiento")
-    ){
-
-        return `
-        Para <strong>${park}</strong> en
-        <strong>${period}</strong>, los mantenimientos relevantes
-        corresponden a actividades preventivas y de inspección,
-        incluyendo tableros, paneles, piranómetros y sistemas
-        CCTV/perimetral.
-        `;
-
-    }
-
+    /* FALLAS */
 
     if(
         q.includes("falla") ||
-        q.includes("fallas")
+        q.includes("fallas") ||
+        q.includes("averia")
     ){
 
-        return `
-        Las fallas o eventos repetitivos deben analizarse
-        considerando su frecuencia, duración, impacto en
-        generación y relación con las condiciones externas.
-        El contexto seleccionado es
-        <strong>${park} · ${period}</strong>.
-        `;
+        return listResponse(
+            "Fallas y eventos operacionales",
+            data.failures,
+            period
+        );
 
     }
 
+
+    /* MANTENIMIENTO */
 
     if(
-        q.includes("acción") ||
-        q.includes("acciones")
+        q.includes("mantenimiento") ||
+        q.includes("mantencion") ||
+        q.includes("mantenciones")
     ){
 
-        return `
-        Las acciones ejecutadas deben quedar vinculadas al
-        evento operacional correspondiente, permitiendo
-        trazabilidad entre problema, diagnóstico, acción y
-        resultado.
-        `;
+        return listResponse(
+            "Mantenimiento",
+            data.maintenance,
+            period
+        );
 
     }
 
+
+    /* ACCIONES */
+
+    if(
+        q.includes("accion") ||
+        q.includes("acciones") ||
+        q.includes("ejecutaron")
+    ){
+
+        return listResponse(
+            "Acciones ejecutadas",
+            data.actions,
+            period
+        );
+
+    }
+
+
+    /* LECCIONES */
 
     if(
         q.includes("aprend") ||
-        q.includes("lección")
+        q.includes("leccion")
     ){
 
-        return `
-        Una de las principales lecciones para
-        <strong>${park}</strong> es la importancia de mantener
-        trazabilidad operacional y consolidar la información
-        antes de generar los reportes de gestión.
-        `;
+        return listResponse(
+            "Lecciones identificadas",
+            data.lessons,
+            period
+        );
 
     }
 
+
+    /* RECOMENDACIONES */
 
     if(
-        q.includes("recom") ||
-        q.includes("recomend")
+        q.includes("recom")
     ){
 
         return `
-        Se recomienda priorizar la consolidación automática
-        de datos, reducir actividades manuales de reportabilidad
-        y utilizar la información histórica para detectar
-        patrones y apoyar la toma de decisiones.
+
+        Para <strong>${park}</strong> durante
+        <strong>${period}</strong>, recomiendo utilizar
+        los eventos registrados como base para:
+
+        <br><br>
+
+        • clasificar las causas de pérdida operacional;<br>
+        • diferenciar eventos internos y restricciones externas;<br>
+        • mantener trazabilidad de las órdenes de trabajo;<br>
+        • analizar problemas de comunicación;<br>
+        • consolidar información antes de elaborar la reportabilidad.
+
+        <div class="source">
+        Recomendación derivada del análisis de los datos
+        operacionales del período.
+        </div>
+
         `;
 
     }
 
 
+    /* RESUMEN */
+
+    if(
+        q.includes("resumen") ||
+        q.includes("desempeno") ||
+        q.includes("como estuvo")
+    ){
+
+        return `
+
+        <strong>${park} · ${period}</strong>
+
+        <br><br>
+
+        Generación:
+        <strong>${data.generation}</strong>
+
+        <br>
+
+        Variación:
+        <strong>${data.generationVariation}</strong>
+
+        <br>
+
+        Insolación:
+        <strong>${data.irradiation}</strong>
+
+        <br>
+
+        Disponibilidad:
+        <strong>${data.availability}</strong>
+
+        <br>
+
+        Operaciones de reconectador:
+        <strong>${data.reconectadores}</strong>
+
+        <br><br>
+
+        El principal foco operacional del período corresponde
+        a los eventos descritos en el informe mensual.
+
+        `;
+
+    }
+
+
+    /* DEFAULT */
+
     return `
-    Estoy analizando tu consulta para
-    <strong>${park}</strong> durante
+
+    Estoy consultando <strong>${park}</strong> durante
     <strong>${period}</strong>.
 
     <br><br>
 
-    En la siguiente etapa esta respuesta se conectará
-    directamente con los datos operacionales del parque,
-    manteniendo el contexto seleccionado.
+    Puedo responder utilizando los datos disponibles sobre:
+
+    <br><br>
+
+    • generación<br>
+    • insolación<br>
+    • disponibilidad<br>
+    • fallas<br>
+    • problemas y eventos<br>
+    • mantenimiento<br>
+    • acciones ejecutadas<br>
+    • lecciones<br>
+    • comparación entre diciembre, enero y febrero
+
     `;
 
 }
 
 
-/* =========================
-   SEGURIDAD HTML
-========================= */
+/* =====================================================
+   LISTAS
+===================================================== */
+
+function listResponse(title,items,period){
+
+    let html =
+        `<strong>${title}</strong>
+         <br>
+         <small>Período: ${period}</small>
+         <br><br>`;
+
+    items.forEach(function(item,index){
+
+        html +=
+            `<strong>${index+1}.</strong> ` +
+            escapeHtml(item) +
+            `<br><br>`;
+
+    });
+
+    html +=
+        `<div class="source">
+        Fuente: Informe O&M ${period} – Santa Inés Sunray.
+        </div>`;
+
+    return html;
+
+}
+
+
+/* =====================================================
+   COMPARACIÓN
+===================================================== */
+
+function comparePeriods(park){
+
+    const d =
+        DATA["Diciembre 2025"];
+
+    const e =
+        DATA["Enero 2026"];
+
+    const f =
+        DATA["Febrero 2026"];
+
+
+    return `
+
+    <strong>Comparación operacional · ${park}</strong>
+
+    <br><br>
+
+    <strong>Diciembre 2025</strong>
+
+    <br>
+
+    Generación: ${d.generation}<br>
+    Variación: ${d.generationVariation}<br>
+    Insolación: ${d.irradiation}<br>
+    Reconectadores: ${d.reconectadores}
+
+    <br><br>
+
+    <strong>Enero 2026</strong>
+
+    <br>
+
+    Generación: ${e.generation}<br>
+    Variación: ${e.generationVariation}<br>
+    Insolación: ${e.irradiation}<br>
+    Reconectadores: ${e.reconectadores}
+
+    <br><br>
+
+    <strong>Febrero 2026</strong>
+
+    <br>
+
+    Generación: ${f.generation}<br>
+    Variación: ${f.generationVariation}<br>
+    Insolación: ${f.irradiation}<br>
+    Reconectadores: ${f.reconectadores}
+
+    <br><br>
+
+    <strong>Lectura:</strong>
+
+    <br><br>
+
+    Enero presenta la mayor desviación de generación
+    respecto de lo estimado, con
+    <strong>${e.generationVariation}</strong>.
+
+    <br><br>
+
+    Además, enero registra problemas de comunicación
+    entre los días 8 y 11 y seis operaciones de
+    reconectador.
+
+    <br><br>
+
+    En febrero la desviación mejora respecto de enero,
+    pero continúan eventos operacionales, incluyendo
+    PDOP, EF1+ y problemas de comunicación asociados
+    a GPM+.
+
+    <br><br>
+
+    Diciembre presenta la menor desviación relativa de
+    generación de los tres períodos y registra tres
+    operaciones de reconectador.
+
+    <div class="source">
+    Fuente: Informes O&M de diciembre 2025, enero 2026
+    y febrero 2026 – Santa Inés Sunray.
+    </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   MAPA
+===================================================== */
+
+function mapError(img){
+
+    img.style.display = "none";
+
+    const container =
+        img.parentElement;
+
+    container.innerHTML = `
+
+        <div style="
+            text-align:center;
+            color:#888;
+            font-size:12px;
+            padding:30px;
+        ">
+
+            <strong>Mapa de Chile</strong>
+
+            <br><br>
+
+            No se pudo cargar
+            <strong>mapa-chile.jpg</strong>.
+
+            <br><br>
+
+            Verifica que el archivo esté en la misma
+            carpeta que preview.html.
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   SEGURIDAD
+===================================================== */
 
 function escapeHtml(text){
 
@@ -1514,41 +1888,6 @@ function escapeHtml(text){
         text;
 
     return div.innerHTML;
-
-}
-
-
-/* =========================
-   ERROR MAPA
-========================= */
-
-function mostrarErrorMapa(img){
-
-    img.style.display = "none";
-
-    const container =
-        img.parentElement;
-
-    const error =
-        document.createElement("div");
-
-    error.style.textAlign =
-        "center";
-
-    error.style.color =
-        "#777";
-
-    error.style.fontSize =
-        "12px";
-
-    error.innerHTML = `
-        <strong>Mapa de Chile</strong><br><br>
-        No se encontró mapa-chile.jpg.<br>
-        Verifica que esté en la misma carpeta
-        que index.html.
-    `;
-
-    container.appendChild(error);
 
 }
 
