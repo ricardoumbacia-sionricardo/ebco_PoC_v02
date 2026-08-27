@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EBCO Inteligente</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#e5e5e5;
+    color:#666;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+#loginScreen{
+    position:fixed;
+    inset:0;
+    background:#d7d7d7;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+
+.loginBox{
+    width:390px;
+    background:white;
+    border-radius:8px;
+    padding:35px;
+    box-shadow:0 5px 25px rgba(0,0,0,.25);
+    text-align:center;
+}
+
+.loginLogo{
+    width:150px;
+    max-height:150px;
+    object-fit:contain;
+    margin-bottom:20px;
+}
+
+.loginBox h1{
+    color:#666;
+    margin:5px 0 25px;
+    font-size:25px;
+}
+
+.loginBox input{
+    width:100%;
+    padding:13px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:14px;
+}
+
+.loginButton{
+    width:100%;
+    padding:13px;
+    margin-top:15px;
+    border:none;
+    border-radius:5px;
+    background:#008542;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.loginButton:hover{
+    background:#006b35;
+}
+
+.loginError{
+    color:#c62828;
+    margin-top:12px;
+    display:none;
+}
+
+/* =========================
+   APP
+========================= */
+
+#app{
+    display:none;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+    width:275px;
+    height:100vh;
+    background:#c6c6c6;
+    padding:8px;
+    float:left;
+    position:relative;
+}
+
+.logoBox{
+    height:150px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:20px;
+    overflow:hidden;
+}
+
+.logoBox img{
+    width:85%;
+    height:85%;
+    object-fit:contain;
+    display:block;
+}
+
+.sectionTitle{
+    color:white;
+    font-size:14px;
+    font-weight:bold;
+    margin:15px 3px 7px;
+}
+
+.menu{
+    background:#b3b3b3;
+    border-radius:6px;
+    overflow:hidden;
+}
+
+.menuItem{
+    padding:14px 15px;
+    color:white;
+    border-bottom:1px solid #aaa;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.menuItem:last-child{
+    border-bottom:none;
+}
+
+.menuItem:hover,
+.menuItem.active{
+    background:#a5a5a5;
+    font-weight:bold;
+}
+
+label{
+    display:block;
+    color:white;
+    font-weight:bold;
+    font-size:13px;
+    margin:15px 3px 6px;
+}
+
+select,
+.userField{
+    width:100%;
+    padding:11px;
+    border:none;
+    border-radius:5px;
+    background:white;
+    color:#666;
+}
+
+.userField{
+    margin-bottom:8px;
+}
+
+.logout{
+    position:absolute;
+    bottom:45px;
+    left:15px;
+    right:15px;
+    padding:11px;
+    border:none;
+    border-radius:5px;
+    background:#777;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.logout:hover{
+    background:#555;
+}
+
+.footerText{
+    position:absolute;
+    bottom:12px;
+    width:100%;
+    text-align:center;
+    left:0;
+    color:#008542;
+    font-size:11px;
+    font-weight:bold;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+    margin-left:275px;
+    height:100vh;
+    padding:8px;
+    overflow:hidden;
+}
+
+/* =========================
+   TOP
+========================= */
+
+.topGrid{
+    display:grid;
+    grid-template-columns:1fr 300px;
+    gap:8px;
+    height:115px;
+}
+
+.card{
+    background:#f7f7f7;
+    border-radius:6px;
+    padding:14px;
+    border:1px solid #ddd;
+}
+
+.smallTitle{
+    font-size:11px;
+    color:#999;
+    text-transform:uppercase;
+}
+
+.bigNumber{
+    font-size:35px;
+    margin-top:5px;
+    color:#888;
+}
+
+.subText{
+    font-size:11px;
+    color:#aaa;
+}
+
+.progress{
+    height:4px;
+    background:#999;
+    margin-top:12px;
+}
+
+/* =========================
+   CONTENT GRID
+========================= */
+
+.contentGrid{
+    display:grid;
+    grid-template-columns:315px 1fr 305px;
+    gap:8px;
+    height:calc(100vh - 131px);
+    margin-top:8px;
+}
+
+/* =========================
+   MAP
+========================= */
+
+.mapPanel{
+    background:white;
+    border:2px solid #367a59;
+    border-radius:40px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    overflow:hidden;
+}
+
+.mapTitle{
+    color:#333;
+    font-size:22px;
+    margin-top:15px;
+}
+
+.mapContainer{
+    flex:1;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:15px;
+}
+
+.mapContainer img{
+    width:88%;
+    height:90%;
+    object-fit:contain;
+    display:block;
+}
+
+.mapChileText{
+    font-size:18px;
+    margin-bottom:20px;
+    color:#777;
+}
+
+/* =========================
+   CENTER
+========================= */
+
+.center{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    min-width:0;
+}
+
+.metrics{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.metric{
+    background:#f7f7f7;
+    border:1px solid #ddd;
+    border-radius:6px;
+    padding:14px;
+    height:84px;
+}
+
+.metricNumber{
+    font-size:23px;
+    color:#777;
+    font-weight:bold;
+    margin-top:6px;
+}
+
+.chart{
+    height:170px;
+    background:#f7f7f7;
+    border:1px solid #ddd;
+    border-radius:6px;
+    padding:14px;
+}
+
+.chartTitle{
+    font-size:12px;
+    color:#999;
+}
+
+.bars{
+    height:125px;
+    display:flex;
+    align-items:flex-end;
+    gap:5px;
+    margin-top:8px;
+}
+
+.bar{
+    flex:1;
+    background:#aaa;
+    min-width:4px;
+    border-radius:2px 2px 0 0;
+}
+
+.lowerGrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    height:165px;
+}
+
+.alerts,
+.history{
+    background:#f7f7f7;
+    border:1px solid #ddd;
+    border-radius:6px;
+    padding:14px;
+    overflow:hidden;
+}
+
+.alerts ul{
+    padding-left:18px;
+    margin:10px 0;
+    font-size:11px;
+    line-height:2;
+}
+
+.historyRow{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid #ddd;
+    padding:8px 0;
+    font-size:11px;
+}
+
+.historyRow strong{
+    color:#008542;
+}
+
+.maintenance{
+    flex:1;
+    background:#f7f7f7;
+    border:1px solid #ddd;
+    border-radius:6px;
+    padding:14px;
+    overflow:hidden;
+}
+
+.maintenance h2{
+    margin:0 0 8px;
+    color:#777;
+    font-size:22px;
+}
+
+.maintenanceItem{
+    padding:9px 0;
+    border-bottom:1px solid #ddd;
+    font-size:12px;
+}
+
+.dot{
+    display:inline-block;
+    width:10px;
+    height:10px;
+    background:#aaa;
+    border-radius:50%;
+    margin-right:10px;
+}
+
+/* =========================
+   CHAT
+========================= */
+
+.chat{
+    background:#efffe9;
+    border:2px solid #008542;
+    border-radius:7px;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+.chatHeader{
+    background:#006b35;
+    color:white;
+    padding:16px;
+}
+
+.chatHeader h2{
+    margin:0;
+    font-size:22px;
+}
+
+.chatHeader span{
+    font-size:11px;
+    color:#c8f5d5;
+}
+
+.chatContext{
+    padding:10px;
+    background:#f5fff1;
+    color:#666;
+    font-size:11px;
+}
+
+.quickTitle{
+    padding:0 10px 5px;
+    font-size:11px;
+    color:#777;
+}
+
+.quickButtons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+    padding:0 10px 8px;
+}
+
+.quickButton{
+    border:1px solid #46aa70;
+    background:white;
+    color:#287c4c;
+    border-radius:18px;
+    padding:7px 5px;
+    font-size:10px;
+    cursor:pointer;
+}
+
+.quickButton:hover{
+    background:#dff7e6;
+}
+
+.chatHistory{
+    flex:1;
+    overflow-y:auto;
+    padding:10px;
+}
+
+.message{
+    margin-bottom:10px;
+    font-size:11px;
+    line-height:1.5;
+}
+
+.userMessage{
+    background:#008542;
+    color:white;
+    padding:8px 10px;
+    border-radius:12px 12px 2px 12px;
+    margin-left:25px;
+}
+
+.aiMessage{
+    background:#dff4d6;
+    color:#4f5f4f;
+    padding:9px 10px;
+    border-radius:12px 12px 12px 2px;
+    margin-right:10px;
+}
+
+.chatInputArea{
+    display:flex;
+    gap:5px;
+    padding:10px;
+    background:#eaffdf;
+    border-top:1px solid #9bcfa9;
+}
+
+.chatInput{
+    flex:1;
+    border:1px solid #ccc;
+    border-radius:5px;
+    padding:10px;
+    outline:none;
+}
+
+.sendButton{
+    background:#008542;
+    color:white;
+    border:none;
+    border-radius:5px;
+    padding:0 14px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.sendButton:hover{
+    background:#006b35;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1100px){
+
+    .sidebar{
+        width:220px;
+    }
+
+    .main{
+        margin-left:220px;
+    }
+
+    .contentGrid{
+        grid-template-columns:260px 1fr;
+    }
+
+    .chat{
+        display:none;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     LOGIN
+========================= -->
+
+<div id="loginScreen">
+
+    <div class="loginBox">
+
+        <img
+            src="logo-ebco.jpg"
+            class="loginLogo"
+            alt="EBCO Energía"
+            onerror="this.style.display='none';"
+        >
+
+        <h1>EBCO Inteligente</h1>
+
+        <input
+            type="text"
+            id="username"
+            placeholder="Usuario"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Contraseña"
+        >
+
+        <button
+            class="loginButton"
+            onclick="login()"
+        >
+            INGRESAR
+        </button>
+
+        <div
+            class="loginError"
+            id="loginError"
+        >
+            Usuario o contraseña incorrectos
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     APP
+========================= -->
+
+<div id="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logoBox">
+
+            <img
+                src="logo-ebco.jpg"
+                alt="EBCO Energía"
+                onerror="this.onerror=null; this.src=''; this.alt='EBCO Energía';"
+            >
+
+        </div>
+
+
+        <div class="sectionTitle">
+            PRINCIPAL
+        </div>
+
+        <div class="menu">
+
+            <div class="menuItem active">
+                ◉ &nbsp; Resumen
+            </div>
+
+            <div class="menuItem">
+                ▥ &nbsp; Generación
+            </div>
+
+            <div class="menuItem">
+                ↪ &nbsp; Disponibilidad
+            </div>
+
+        </div>
+
+
+        <div class="sectionTitle">
+            GESTIÓN
+        </div>
+
+        <div class="menu">
+
+            <div class="menuItem">
+                ▤ &nbsp; Informes
+            </div>
+
+            <div class="menuItem">
+                ⚒ &nbsp; Mantenimiento
+            </div>
+
+            <div class="menuItem">
+                △ &nbsp; Alertas
+            </div>
+
+        </div>
+
+
+        <label>
+            PARQUE
+        </label>
+
+        <select id="parkSelect" onchange="updateDashboard()">
+
+            <option>Santa Inés</option>
+            <option>Parque Norte</option>
+            <option>Parque Centro</option>
+            <option>Parque Sur</option>
+
+        </select>
+
+
+        <label>
+            PERÍODO
+        </label>
+
+        <select id="periodSelect" onchange="updateDashboard()">
+
+            <option>Enero 2026</option>
+            <option>Febrero 2026</option>
+            <option>Diciembre 2025</option>
+
+        </select>
+
+
+        <label>
+            USUARIO
+        </label>
+
+        <div
+            class="userField"
+            id="loggedUser"
+        >
+            sponsor
+        </div>
+
+
+        <button
+            class="logout"
+            onclick="logout()"
+        >
+            ⎋ &nbsp; SALIR
+        </button>
+
+        <div class="footerText">
+            Producto de prueba y<br>
+            académico
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+
+        <!-- TOP -->
+
+        <div class="topGrid">
+
+            <div class="card">
+
+                <div class="smallTitle">
+                    Disponibilidad mensual
+                </div>
+
+                <div class="bigNumber">
+                    100%
+                </div>
+
+                <div class="subText">
+                    Mínimo contractual: 95%
+                </div>
+
+                <div class="progress"></div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="smallTitle">
+                    Performance Ratio (PR)
+                </div>
+
+                <div class="bigNumber">
+                    N/A
+                </div>
+
+                <div class="subText">
+                    Limitaciones del parque
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONTENT -->
+
+        <div class="contentGrid">
+
+
+            <!-- MAP -->
+
+            <section class="mapPanel">
+
+                <div class="mapTitle">
+                    PARQUES
+                </div>
+
+                <div class="mapContainer">
+
+                    <img
+                        src="mapa-chile.jpg"
+                        alt="Mapa de Chile con ubicación de parques EBCO"
+                        onerror="mostrarErrorMapa(this)"
+                    >
+
+                </div>
+
+                <div class="mapChileText">
+                    CHILE
+                </div>
+
+            </section>
+
+
+            <!-- CENTER -->
+
+            <section class="center">
+
+
+                <div class="metrics">
+
+                    <div class="metric">
+
+                        <div class="smallTitle">
+                            Energía generada
+                        </div>
+
+                        <div
+                            class="metricNumber"
+                            id="energyValue"
+                        >
+                            1.919 MWh
+                        </div>
+
+                        <div class="subText">
+                            ▼ -20,2% vs estimado
+                        </div>
+
+                    </div>
+
+
+                    <div class="metric">
+
+                        <div class="smallTitle">
+                            Insolación
+                        </div>
+
+                        <div
+                            class="metricNumber"
+                            id="irradiationValue"
+                        >
+                            265,7 kWh/m²
+                        </div>
+
+                        <div class="subText">
+                            ▼ -20,3% vs estimado
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart">
+
+                    <div class="chartTitle">
+                        Generación diaria vs insolación
+                    </div>
+
+                    <div class="bars">
+
+                        <div class="bar" style="height:80%"></div>
+                        <div class="bar" style="height:76%"></div>
+                        <div class="bar" style="height:73%"></div>
+                        <div class="bar" style="height:68%"></div>
+                        <div class="bar" style="height:79%"></div>
+                        <div class="bar" style="height:84%"></div>
+                        <div class="bar" style="height:74%"></div>
+                        <div class="bar" style="height:15%"></div>
+                        <div class="bar" style="height:10%"></div>
+                        <div class="bar" style="height:65%"></div>
+                        <div class="bar" style="height:72%"></div>
+                        <div class="bar" style="height:82%"></div>
+                        <div class="bar" style="height:12%"></div>
+                        <div class="bar" style="height:71%"></div>
+                        <div class="bar" style="height:77%"></div>
+                        <div class="bar" style="height:81%"></div>
+                        <div class="bar" style="height:76%"></div>
+                        <div class="bar" style="height:87%"></div>
+                        <div class="bar" style="height:83%"></div>
+                        <div class="bar" style="height:79%"></div>
+                        <div class="bar" style="height:75%"></div>
+                        <div class="bar" style="height:72%"></div>
+                        <div class="bar" style="height:81%"></div>
+                        <div class="bar" style="height:84%"></div>
+                        <div class="bar" style="height:77%"></div>
+                        <div class="bar" style="height:75%"></div>
+                        <div class="bar" style="height:79%"></div>
+                        <div class="bar" style="height:82%"></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="lowerGrid">
+
+                    <div class="alerts">
+
+                        <div class="smallTitle">
+                            Alertas del mes
+                        </div>
+
+                        <ul id="alertsList">
+
+                            <li>
+                                Se registraron problemas de comunicación.
+                            </li>
+
+                            <li>
+                                Se registró un evento EF1+.
+                            </li>
+
+                            <li>
+                                El parque mantiene restricciones asociadas a la red.
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <div class="history">
+
+                        <div class="smallTitle">
+                            Disponibilidad histórica
+                        </div>
+
+                        <div class="historyRow">
+                            <span>Oct 2025</span>
+                            <strong>100,0%</strong>
+                        </div>
+
+                        <div class="historyRow">
+                            <span>Nov 2025</span>
+                            <strong>100,0%</strong>
+                        </div>
+
+                        <div class="historyRow">
+                            <span>Dic 2025</span>
+                            <strong>100,0%</strong>
+                        </div>
+
+                        <div class="historyRow">
+                            <span>Ene 2026</span>
+                            <strong>100,0%</strong>
+                        </div>
+
+                        <div class="historyRow">
+                            <span>Feb 2026</span>
+                            <strong>100,0%</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="maintenance">
+
+                    <h2>
+                        Próximos mantenimientos
+                    </h2>
+
+                    <div class="maintenanceItem">
+                        <span class="dot"></span>
+                        <strong>Mantención semestral de tableros</strong>
+                        <br>
+                        <small>
+                            Inspección de fijaciones y polvo interior
+                        </small>
+                    </div>
+
+                    <div class="maintenanceItem">
+                        <span class="dot"></span>
+                        <strong>Lavado de paneles</strong>
+                        <br>
+                        <small>
+                            Evaluación de proveedor especializado
+                        </small>
+                    </div>
+
+                    <div class="maintenanceItem">
+                        <span class="dot"></span>
+                        <strong>Piranómetros</strong>
+                        <br>
+                        <small>
+                            Inspecciones semanales y mensuales
+                        </small>
+                    </div>
+
+                    <div class="maintenanceItem">
+                        <span class="dot"></span>
+                        <strong>CCTV + Perimetral</strong>
+                        <br>
+                        <small>
+                            Monitoreo mensual
+                        </small>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CHAT -->
+
+            <section class="chat">
+
+                <div class="chatHeader">
+
+                    <h2>
+                        EBCOInteligente
+                    </h2>
+
+                    <span>
+                        ● Lecciones
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="chatContext"
+                    id="chatContext"
+                >
+                    Santa Inés · Enero 2026
+                </div>
+
+
+                <div class="quickTitle">
+                    CONSULTAS RÁPIDAS
+                </div>
+
+
+                <div class="quickButtons">
+
+                    <button
+                        class="quickButton"
+                        onclick="askQuestion('¿Qué problemas se presentaron?')"
+                    >
+                        ¿Qué problemas se presentaron?
+                    </button>
+
+                    <button
+                        class="quickButton"
+                        onclick="askQuestion('¿Qué mantenimientos se realizaron?')"
+                    >
+                        ¿Qué mantenimientos se realizaron?
+                    </button>
+
+                    <button
+                        class="quickButton"
+                        onclick="askQuestion('¿Qué fallas se repitieron?')"
+                    >
+                        ¿Qué fallas se repitieron?
+                    </button>
+
+                    <button
+                        class="quickButton"
+                        onclick="askQuestion('¿Qué acciones se ejecutaron?')"
+                    >
+                        ¿Qué acciones se ejecutaron?
+                    </button>
+
+                    <button
+                        class="quickButton"
+                        onclick="askQuestion('¿Qué se aprendió?')"
+                    >
+                        ¿Qué se aprendió?
+                    </button>
+
+                    <button
+                        class="quickButton"
+                        onclick="askQuestion('¿Qué recomendarías?')"
+                    >
+                        ¿Qué recomendarías?
+                    </button>
+
+                </div>
+
+
+                <!-- HISTORIAL -->
+
+                <div
+                    class="chatHistory"
+                    id="chatHistory"
+                >
+
+                    <div class="message">
+
+                        <div class="aiMessage">
+
+                            Hola. Estoy consultando la información
+                            correspondiente a <strong>Santa Inés</strong>
+                            para <strong>Enero 2026</strong>.
+
+                            <br><br>
+
+                            Puedes preguntarme por problemas,
+                            mantenimiento, fallas, acciones ejecutadas
+                            o lecciones aprendidas.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chatInputArea">
+
+                    <input
+                        type="text"
+                        class="chatInput"
+                        id="chatInput"
+                        placeholder="Escribe tu pregunta..."
+                        onkeydown="handleEnter(event)"
+                    >
+
+                    <button
+                        class="sendButton"
+                        onclick="sendMessage()"
+                    >
+                        ENVIAR
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+/* =========================
+   LOGIN
+========================= */
+
+/*
+   USUARIO Y PASSWORD DEL PROTOTIPO
+
+   Usuario:
+   sponsor
+
+   Password:
+   ebco2026
+*/
+
+const VALID_USER = "sponsor";
+const VALID_PASSWORD = "ebco2026";
+
+
+function login(){
+
+    const user =
+        document.getElementById("username").value.trim();
+
+    const pass =
+        document.getElementById("password").value;
+
+    if(
+        user === VALID_USER &&
+        pass === VALID_PASSWORD
+    ){
+
+        document.getElementById("loginScreen").style.display =
+            "none";
+
+        document.getElementById("app").style.display =
+            "block";
+
+        document.getElementById("loggedUser").textContent =
+            user;
+
+        sessionStorage.setItem(
+            "ebco_logged",
+            "true"
+        );
+
+    }else{
+
+        document.getElementById("loginError").style.display =
+            "block";
+
+    }
+
+}
+
+
+function logout(){
+
+    sessionStorage.removeItem("ebco_logged");
+
+    document.getElementById("app").style.display =
+        "none";
+
+    document.getElementById("loginScreen").style.display =
+        "flex";
+
+    document.getElementById("username").value =
+        "";
+
+    document.getElementById("password").value =
+        "";
+
+}
+
+
+/* =========================
+   CHECK LOGIN
+========================= */
+
+window.addEventListener("load",function(){
+
+    if(
+        sessionStorage.getItem("ebco_logged") === "true"
+    ){
+
+        document.getElementById("loginScreen").style.display =
+            "none";
+
+        document.getElementById("app").style.display =
+            "block";
+
+    }
+
+});
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+function updateDashboard(){
+
+    const park =
+        document.getElementById("parkSelect").value;
+
+    const period =
+        document.getElementById("periodSelect").value;
+
+    document.getElementById("chatContext").textContent =
+        park + " · " + period;
+
+    /*
+       Aquí después conectamos los datos reales
+       de los CSV/XLSM.
+    */
+
+}
+
+
+/* =========================
+   CHAT
+========================= */
+
+function handleEnter(event){
+
+    if(event.key === "Enter"){
+
+        sendMessage();
+
+    }
+
+}
+
+
+function sendMessage(){
+
+    const input =
+        document.getElementById("chatInput");
+
+    const question =
+        input.value.trim();
+
+    if(!question){
+        return;
+    }
+
+    askQuestion(question);
+
+    input.value = "";
+
+}
+
+
+function askQuestion(question){
+
+    const history =
+        document.getElementById("chatHistory");
+
+    const park =
+        document.getElementById("parkSelect").value;
+
+    const period =
+        document.getElementById("periodSelect").value;
+
+
+    /*
+       MENSAJE DEL USUARIO
+    */
+
+    const userDiv =
+        document.createElement("div");
+
+    userDiv.className =
+        "message";
+
+    userDiv.innerHTML =
+        '<div class="userMessage">' +
+        escapeHtml(question) +
+        '</div>';
+
+    history.appendChild(userDiv);
+
+
+    /*
+       RESPUESTA CONTEXTUAL
+       
+       Importante:
+       no se borra el historial.
+       Cada pregunta se agrega debajo
+       de la anterior.
+    */
+
+    let answer = getAnswer(
+        question,
+        park,
+        period
+    );
+
+
+    const aiDiv =
+        document.createElement("div");
+
+    aiDiv.className =
+        "message";
+
+    aiDiv.innerHTML =
+        '<div class="aiMessage">' +
+        answer +
+        '</div>';
+
+    history.appendChild(aiDiv);
+
+
+    history.scrollTop =
+        history.scrollHeight;
+
+}
+
+
+/* =========================
+   RESPUESTAS
+========================= */
+
+function getAnswer(question,park,period){
+
+    const q =
+        question.toLowerCase();
+
+
+    if(
+        q.includes("problema") ||
+        q.includes("problemas")
+    ){
+
+        return `
+        Para <strong>${park}</strong> durante
+        <strong>${period}</strong>, el dashboard registra
+        eventos operacionales que deben analizarse en conjunto
+        con las restricciones externas y las condiciones de
+        operación del parque.
+        `;
+
+    }
+
+
+    if(
+        q.includes("mantenimiento")
+    ){
+
+        return `
+        Para <strong>${park}</strong> en
+        <strong>${period}</strong>, los mantenimientos relevantes
+        corresponden a actividades preventivas y de inspección,
+        incluyendo tableros, paneles, piranómetros y sistemas
+        CCTV/perimetral.
+        `;
+
+    }
+
+
+    if(
+        q.includes("falla") ||
+        q.includes("fallas")
+    ){
+
+        return `
+        Las fallas o eventos repetitivos deben analizarse
+        considerando su frecuencia, duración, impacto en
+        generación y relación con las condiciones externas.
+        El contexto seleccionado es
+        <strong>${park} · ${period}</strong>.
+        `;
+
+    }
+
+
+    if(
+        q.includes("acción") ||
+        q.includes("acciones")
+    ){
+
+        return `
+        Las acciones ejecutadas deben quedar vinculadas al
+        evento operacional correspondiente, permitiendo
+        trazabilidad entre problema, diagnóstico, acción y
+        resultado.
+        `;
+
+    }
+
+
+    if(
+        q.includes("aprend") ||
+        q.includes("lección")
+    ){
+
+        return `
+        Una de las principales lecciones para
+        <strong>${park}</strong> es la importancia de mantener
+        trazabilidad operacional y consolidar la información
+        antes de generar los reportes de gestión.
+        `;
+
+    }
+
+
+    if(
+        q.includes("recom") ||
+        q.includes("recomend")
+    ){
+
+        return `
+        Se recomienda priorizar la consolidación automática
+        de datos, reducir actividades manuales de reportabilidad
+        y utilizar la información histórica para detectar
+        patrones y apoyar la toma de decisiones.
+        `;
+
+    }
+
+
+    return `
+    Estoy analizando tu consulta para
+    <strong>${park}</strong> durante
+    <strong>${period}</strong>.
+
+    <br><br>
+
+    En la siguiente etapa esta respuesta se conectará
+    directamente con los datos operacionales del parque,
+    manteniendo el contexto seleccionado.
+    `;
+
+}
+
+
+/* =========================
+   SEGURIDAD HTML
+========================= */
+
+function escapeHtml(text){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================
+   ERROR MAPA
+========================= */
+
+function mostrarErrorMapa(img){
+
+    img.style.display = "none";
+
+    const container =
+        img.parentElement;
+
+    const error =
+        document.createElement("div");
+
+    error.style.textAlign =
+        "center";
+
+    error.style.color =
+        "#777";
+
+    error.style.fontSize =
+        "12px";
+
+    error.innerHTML = `
+        <strong>Mapa de Chile</strong><br><br>
+        No se encontró mapa-chile.jpg.<br>
+        Verifica que esté en la misma carpeta
+        que index.html.
+    `;
+
+    container.appendChild(error);
+
+}
+
+</script>
+
+</body>
+</html>
